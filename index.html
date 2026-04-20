@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine | Experiencias de Entretenimiento Premium</title>
+    <title>Cine | Experiencias Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #006039; /* Verde Rolex */
+            --primary: #006039;
             --primary-dark: #004429;
-            --accent: #a37e2c; /* Dorado */
+            --accent: #a37e2c;
             --white: #ffffff;
             --glass: rgba(255, 255, 255, 0.9);
             --shadow: 0 20px 50px rgba(0,0,0,0.15);
@@ -24,7 +24,6 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: #1a1a1a;
-            line-height: 1.6;
         }
 
         @keyframes gradientBG {
@@ -33,10 +32,10 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -50,29 +49,17 @@
             clip-path: ellipse(150% 100% at 50% 0%);
         }
 
-        .hero h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); 
-            margin-bottom: 10px;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
-        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 10vw, 4rem); margin-bottom: 10px; }
+        .hero p { font-size: 1rem; max-width: 500px; opacity: 0.9; font-weight: 300; }
 
-        .hero p { 
-            font-size: 1.2rem; 
-            max-width: 600px; 
-            font-weight: 300; 
-            letter-spacing: 1px;
-            opacity: 0.9;
-        }
-
-        /* --- INFO SECTION --- */
+        /* --- STATS / BENEFICIOS (AJUSTADO A GRID) --- */
         .stats-bar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: -50px auto 50px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: -40px auto 40px;
             max-width: 1000px;
-            padding: 30px;
+            padding: 25px;
             background: var(--white);
             border-radius: 20px;
             box-shadow: var(--shadow);
@@ -81,160 +68,135 @@
         }
 
         .stat-item { text-align: center; }
-        .stat-item i { color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; }
-        .stat-item h4 { font-size: 0.9rem; text-transform: uppercase; color: #777; }
+        .stat-item i { color: var(--primary); font-size: 1.4rem; margin-bottom: 8px; }
+        .stat-item h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); font-weight: 800; }
+        .stat-item p { font-size: 0.7rem; color: #777; }
 
-        /* --- PACKAGES --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        
-        .section-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 80px; height: 3px;
-            background: var(--primary);
-            position: absolute; bottom: -10px; left: 50%;
-            transform: translateX(-50%);
-        }
+        /* --- PAQUETES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 15px; }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 40px; }
 
         .package-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(2, 1fr); /* 2 columnas por defecto */
+            gap: 20px;
         }
 
         .package-card {
-            background: var(--glass);
-            border-radius: 25px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.3);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .package-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
         }
 
         .package-img {
-            height: 200px;
+            height: 140px;
             background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 4rem;
+            font-size: 2.5rem;
         }
 
-        .package-body { padding: 40px; text-align: center; }
-        
-        .price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 15px 0;
-            display: block;
-        }
+        .package-body { padding: 15px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .package-body h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 5px; }
+        .package-body .price { font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; display: block; }
+        .package-body p { font-size: 0.75rem; color: #666; margin-bottom: 15px; line-height: 1.3; }
 
         .btn-main {
             background: var(--primary);
             color: white;
-            padding: 15px 35px;
+            padding: 12px 10px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            display: inline-block;
-            transition: 0.3s;
+            font-size: 0.7rem;
+            text-transform: uppercase;
             border: none;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,96,57,0.2);
+            width: 100%;
         }
 
-        .btn-main:hover { background: var(--primary-dark); transform: scale(1.05); }
-
-        /* --- FORM SECTION --- */
+        /* --- FORMULARIO --- */
         #booking-section {
             display: none;
             background: var(--white);
-            border-radius: 30px;
-            padding: 60px;
+            border-radius: 25px;
+            padding: 30px 20px;
             box-shadow: var(--shadow);
-            margin-top: 80px;
-            animation: fadeIn 0.6s ease;
+            margin-top: 50px;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .input-box { display: flex; flex-direction: column; gap: 8px; }
-        .input-box label { font-weight: 700; font-size: 0.85rem; color: var(--primary); }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .input-box { display: flex; flex-direction: column; gap: 5px; }
+        .input-box label { font-weight: 700; font-size: 0.7rem; color: var(--primary); }
         .input-box input, .input-box select, .input-box textarea {
-            padding: 15px;
-            border: 2px solid #edf2f0;
-            border-radius: 12px;
-            background: #fcfdfc;
-            transition: 0.3s;
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            font-size: 0.9rem;
         }
-        .input-box input:focus { border-color: var(--primary); outline: none; }
 
         /* --- MODAL --- */
         .modal {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,68,41,0.4);
-            backdrop-filter: blur(10px);
+            background: rgba(0,68,41,0.5);
+            backdrop-filter: blur(8px);
             z-index: 1000;
             align-items: center; justify-content: center;
         }
 
         .modal-content {
             background: white;
-            width: 90%; max-width: 600px;
-            padding: 50px;
-            border-radius: 30px;
+            width: 90%; max-width: 450px;
+            padding: 30px;
+            border-radius: 25px;
             position: relative;
-            box-shadow: var(--shadow);
         }
 
-        .close { position: absolute; top: 25px; right: 25px; cursor: pointer; font-size: 1.5rem; }
+        .modal-list { list-style: none; margin: 20px 0; font-size: 0.9rem; }
+        .modal-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 
-        .modal-list { list-style: none; margin: 25px 0; }
-        .modal-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .modal-list li i { color: var(--primary); }
+        /* --- RESPONSIVE MOBILE (HILERAS DE 2) --- */
+        @media (max-width: 600px) {
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas para beneficios */
+                margin: -30px 10px 30px;
+            }
+            /* El tercer elemento de beneficios ocupará toda la fila para que no quede un hueco solo */
+            .stat-item:last-child {
+                grid-column: 1 / -1;
+                border-top: 1px solid #eee;
+                padding-top: 15px;
+                margin-top: 5px;
+            }
 
-        /* --- FOOTER --- */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .social-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
-        .social-links a { color: white; font-size: 1.8rem; transition: 0.3s; }
-        .social-links a:hover { color: var(--accent); transform: translateY(-5px); }
-
-        @media (max-width: 768px) {
+            .package-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas para paquetes */
+                gap: 12px;
+            }
+            
+            .package-img { height: 100px; font-size: 2rem; }
+            .package-body { padding: 12px 8px; }
+            .package-body h3 { font-size: 0.9rem; }
+            .package-body .price { font-size: 1rem; }
+            
             .form-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
-            #booking-section { padding: 30px; }
         }
+
+        footer { background: var(--primary); color: white; padding: 40px 20px; text-align: center; margin-top: 60px; }
     </style>
 </head>
 <body>
 
     <section class="hero">
         <h1>CINE</h1>
-        <p>Experiencias de entretenimiento que transforman tus eventos familiares en momentos mágicos.</p>
+        <p>Transformamos tu espacio en una experiencia cinematográfica de lujo.</p>
     </section>
 
     <div class="stats-bar">
@@ -251,7 +213,7 @@
         <div class="stat-item">
             <i class="fa-solid fa-truck-ramp-box"></i>
             <h4>Sin Esfuerzo</h4>
-            <p>Nosotros instalamos</p>
+            <p>Instalación Completa</p>
         </div>
     </div>
 
@@ -265,9 +227,9 @@
                 </div>
                 <div class="package-body">
                     <h3>Classic Cinema</h3>
-                    <span class="price">$1,800 MXN</span>
-                    <p>La opción perfecta para espacios medianos y fiestas íntimas.</p><br>
-                    <button class="btn-main" onclick="openModal('classic')">Explorar Contenido</button>
+                    <span class="price">$1,800</span>
+                    <p>Ideal para eventos íntimos.</p>
+                    <button class="btn-main" onclick="openModal('classic')">Ver más</button>
                 </div>
             </div>
 
@@ -277,48 +239,35 @@
                 </div>
                 <div class="package-body">
                     <h3>Gala VIP Luxe</h3>
-                    <span class="price">$3,200 MXN</span>
-                    <p>El máximo nivel de detalle para eventos de alto impacto.</p><br>
-                    <button class="btn-main" onclick="openModal('gala')">Explorar Contenido</button>
+                    <span class="price">$3,200</span>
+                    <p>Máximo nivel de detalle.</p>
+                    <button class="btn-main" onclick="openModal('gala')">Ver más</button>
                 </div>
             </div>
         </div>
 
         <section id="booking-section">
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Reservar Fecha</h2>
+            <h2 style="font-family: 'Playfair Display'; font-size: 1.8rem; text-align: center; margin-bottom: 25px;">Reservar Fecha</h2>
             <form id="bookingForm">
                 <div class="form-grid">
                     <div class="input-box">
-                        <label>NOMBRE DEL ANFITRIÓN</label>
-                        <input type="text" id="name" placeholder="Tu nombre" required>
+                        <label>NOMBRE</label>
+                        <input type="text" id="name" required>
                     </div>
                     <div class="input-box">
-                        <label>FECHA DEL EVENTO</label>
+                        <label>FECHA</label>
                         <input type="date" id="date" required>
                     </div>
                     <div class="input-box">
-                        <label>NÚMERO DE INVITADOS</label>
-                        <input type="number" id="guests" placeholder="¿Cuántos asistirán?" required>
+                        <label>INVITADOS</label>
+                        <input type="number" id="guests" required>
                     </div>
                     <div class="input-box">
-                        <label>ZONA / DIRECCIÓN</label>
-                        <input type="text" id="location" placeholder="Ej. Ciudad de México" required>
+                        <label>UBICACIÓN</label>
+                        <input type="text" id="location" required>
                     </div>
-                    <div class="input-box" style="grid-column: 1 / -1;">
-                        <label>TIPO DE CELEBRACIÓN</label>
-                        <select id="event-type">
-                            <option>Cumpleaños</option>
-                            <option>Bautizo / Comunión</option>
-                            <option>Boda (Zona de Niños)</option>
-                            <option>Otro</option>
-                        </select>
-                    </div>
-                    <div class="input-box" style="grid-column: 1 / -1;">
-                        <label>REQUERIMIENTOS ESPECIALES</label>
-                        <textarea id="notes" rows="4" placeholder="Cuéntanos más detalles..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-main" style="grid-column: 1 / -1; background: #25D366; font-size: 1.1rem; padding: 20px;">
-                        <i class="fa-brands fa-whatsapp"></i> SOLICITAR COTIZACIÓN POR WHATSAPP
+                    <button type="submit" class="btn-main" style="grid-column: 1 / -1; background: #25D366; padding: 18px; font-size: 0.9rem;">
+                        <i class="fa-brands fa-whatsapp"></i> AGENDAR POR WHATSAPP
                     </button>
                 </div>
             </form>
@@ -327,31 +276,21 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
             <h2 id="modal-title" style="font-family: 'Playfair Display'; color: var(--primary);"></h2>
             <ul class="modal-list" id="modal-list"></ul>
-            <button class="btn-main" style="width: 100%;" onclick="startBooking()">Reservar este paquete</button>
+            <button class="btn-main" style="width: 100%; padding: 15px;" onclick="startBooking()">Contratar ahora</button>
+            <p onclick="closeModal()" style="text-align: center; margin-top: 15px; font-size: 0.8rem; color: #999; cursor: pointer;">Cerrar ventana</p>
         </div>
     </div>
 
     <footer>
-        <div class="social-links">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-        <p>&copy; 2026 Cine - Zona de Entretenimiento. Calidad y Elegancia.</p>
+        <p>&copy; 2026 Cine - Zona de Entretenimiento</p>
     </footer>
 
     <script>
         const details = {
-            'classic': {
-                title: 'Classic Cinema',
-                list: ['Pantalla HD 80"', 'Sonido Estéreo', '10 Puffs cómodos', '3 Horas de proyección', 'Instalación básica']
-            },
-            'gala': {
-                title: 'Gala VIP Luxe',
-                list: ['Pantalla 120" Pro', 'Sonido Envolvente', 'Carpa ambientada con luces', 'Alfombrado y Decoración Luxe', 'Palomitas gourmet incluidas', 'Servicio por 5 horas']
-            }
+            'classic': { title: 'Classic Cinema', list: ['Pantalla 80"', 'Sonido Estéreo', '10 Puffs', '3 Horas'] },
+            'gala': { title: 'Gala VIP Luxe', list: ['Pantalla 120"', 'Sonido Envolvente', 'Carpa con Luces', 'Palomitas Gourmet'] }
         };
 
         let currentPackage = "";
@@ -360,10 +299,7 @@
             currentPackage = details[pkg].title;
             document.getElementById('modal-title').innerText = details[pkg].title;
             const list = document.getElementById('modal-list');
-            list.innerHTML = "";
-            details[pkg].list.forEach(item => {
-                list.innerHTML += `<li><i class="fa-solid fa-check"></i> ${item}</li>`;
-            });
+            list.innerHTML = details[pkg].list.map(i => `<li><i class="fa-solid fa-check" style="color:var(--primary)"></i> ${i}</li>`).join('');
             document.getElementById('modal').style.display = 'flex';
         }
 
@@ -377,7 +313,7 @@
 
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const msg = `*RESERVA CINE*%0A*Paquete:* ${currentPackage}%0A*Nombre:* ${document.getElementById('name').value}%0A*Fecha:* ${document.getElementById('date').value}%0A*Lugar:* ${document.getElementById('location').value}%0A*Invitados:* ${document.getElementById('guests').value}`;
+            const msg = `*RESERVA CINE*%0A*Paquete:* ${currentPackage}%0A*Nombre:* ${document.getElementById('name').value}%0A*Fecha:* ${document.getElementById('date').value}`;
             window.open(`https://wa.me/5652092860?text=${msg}`, '_blank');
         });
     </script>
