@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine | Zona de Entretenimiento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #006039;
+            --soft-white: #ffffff;
+            --bg-light: #f4f7f5;
+            --text-dark: #1a1a1a;
+            --shadow-premium: 0 20px 40px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--soft-white);
+            padding: 30px 5%;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+
+        .intro-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* --- GRID DE PAQUETES --- */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: var(--soft-white);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-premium);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid rgba(0,96,57,0.05);
+            position: relative;
+        }
+
+        .package-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary-green);
+        }
+
+        .package-card i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .package-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .package-card .price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .btn-info {
+            background: transparent;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .btn-info {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* --- MODAL (VENTANA EMERGENTE) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-content h2 { font-family: 'Playfair Display', serif; color: var(--primary-green); margin-bottom: 20px; }
+        .modal-content ul { list-style: none; margin-bottom: 30px; }
+        .modal-content ul li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        .modal-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .btn-contract {
+            display: block;
+            width: 100%;
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        /* --- FORMULARIO --- */
+        #booking-section {
+            display: none;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-premium);
+            margin-top: 50px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; color: #555; }
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .full-width { grid-column: 1 / -1; }
+
+        .btn-whatsapp {
+            grid-column: 1 / -1;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-whatsapp:hover { transform: scale(1.02); background: #1eb954; }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .logo-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-title">CINE</div>
+        <div class="subtitle">Zona de Entretenimiento</div>
+    </header>
+
+    <div class="container">
+        <p class="intro-text">
+            Transformamos tu evento en una experiencia cinematográfica inolvidable. 
+            Diseñado para que los niños disfruten y los adultos descansen.
+        </p>
+
+        <div class="package-grid">
+            <div class="package-card" onclick="openModal('basic')">
+                <i class="fa-solid fa-film"></i>
+                <h3>Paquete Classic</h3>
+                <span class="price">$1,800 MXN</span>
+                <p>Ideal para reuniones pequeñas.</p><br>
+                <button class="btn-info">Ver detalles</button>
+            </div>
+
+            <div class="package-card" onclick="openModal('premium')">
+                <i class="fa-solid fa-star"></i>
+                <h3>Paquete Gala</h3>
+                <span class="price">$3,200 MXN</span>
+                <p>Nuestra experiencia más completa.</p><br>
+                <button class="btn-info">Ver detalles</button>
+            </div>
+        </div>
+
+        <section id="booking-section">
+            <h2 style="font-family: 'Playfair Display'; margin-bottom: 30px; text-align: center;">Agendar Experiencia</h2>
+            <form id="reservationForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Tipo de Evento</label>
+                        <select id="event-type">
+                            <option>Cumpleaños Infantil</option>
+                            <option>Boda / XV Años</option>
+                            <option>Evento Privado</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Fecha del Evento</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Número de Invitados</label>
+                        <input type="number" id="guests" placeholder="Ej. 15" required>
+                    </div>
+                    <div class="input-group full-width">
+                        <label>Ubicación del Evento (Dirección o Zona)</label>
+                        <input type="text" id="location" placeholder="Ej. Polanco, CDMX" required>
+                    </div>
+                    <div class="input-group full-width">
+                        <label>¿Alguna nota especial?</label>
+                        <textarea id="notes" rows="3" placeholder="Comentarios sobre el espacio o preferencias..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> ENVIAR SOLICITUD POR WHATSAPP
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <div id="modal-info" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Título del Paquete</h2>
+            <ul id="modal-list">
+                </ul>
+            <a href="#booking-section" class="btn-contract" onclick="showForm()">Contratar este paquete</a>
+        </div>
+    </div>
+
+    <script>
+        const packageData = {
+            'basic': {
+                title: 'Paquete Classic',
+                features: [
+                    'Pantalla de proyección 80"',
+                    'Sistema de sonido estéreo',
+                    'Asientos cómodos para 10 niños',
+                    '3 horas de servicio',
+                    'Instalación y desmontaje'
+                ]
+            },
+            'premium': {
+                title: 'Paquete Gala',
+                features: [
+                    'Pantalla gigante 120"',
+                    'Sonido envolvente Pro',
+                    'Ambientación con carpa y luces LED',
+                    'Cojines y alfombrado premium',
+                    'Palomitas ilimitadas por 4 horas',
+                    'Operador dedicado durante el evento'
+                ]
+            }
+        };
+
+        let selectedPackage = "";
+
+        function openModal(slug) {
+            const data = packageData[slug];
+            selectedPackage = data.title;
+            document.getElementById('modal-title').innerText = data.title;
+            const list = document.getElementById('modal-list');
+            list.innerHTML = "";
+            data.features.forEach(f => {
+                const li = document.createElement('li');
+                li.innerText = f;
+                list.appendChild(li);
+            });
+            document.getElementById('modal-info').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-info').style.display = 'none';
+        }
+
+        function showForm() {
+            closeModal();
+            document.getElementById('booking-section').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('booking-section').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const event = document.getElementById('event-type').value;
+            const date = document.getElementById('date').value;
+            const guests = document.getElementById('guests').value;
+            const location = document.getElementById('location').value;
+            const notes = document.getElementById('notes').value;
+
+            const message = `*NUEVA RESERVA - CINE*%0A%0A` +
+                            `*Paquete:* ${selectedPackage}%0A` +
+                            `*Cliente:* ${name}%0A` +
+                            `*Evento:* ${event}%0A` +
+                            `*Fecha:* ${date}%0A` +
+                            `*Invitados:* ${guests}%0A` +
+                            `*Lugar:* ${location}%0A` +
+                            `*Notas:* ${notes}`;
+            
+            window.open(`https://wa.me/5652092860?text=${message}`, '_blank');
+        });
+    </script>
+</body>
+</html>
