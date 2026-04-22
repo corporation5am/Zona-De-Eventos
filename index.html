@@ -12,8 +12,11 @@
             --primary-dark: #004429;
             --accent: #a37e2c; /* Dorado */
             --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 20px 50px rgba(0,0,0,0.15);
+            --glass: rgba(255, 255, 255, 0.95);
+            /* Sombras mejoradas para mayor profundidad */
+            --shadow-sm: 0 5px 15px rgba(0,0,0,0.08);
+            --shadow-md: 0 15px 35px rgba(0,0,0,0.12);
+            --shadow-lg: 0 25px 60px rgba(0,0,0,0.18);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -36,7 +39,7 @@
         /* --- HERO SECTION --- */
         .hero {
             height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -54,7 +57,7 @@
             font-family: 'Playfair Display', serif; 
             font-size: clamp(2.5rem, 8vw, 4.5rem); 
             margin-bottom: 10px;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+            text-shadow: 3px 6px 15px rgba(0,0,0,0.5);
         }
 
         .hero p { 
@@ -75,14 +78,15 @@
             padding: 30px;
             background: var(--white);
             border-radius: 20px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
             position: relative;
             z-index: 10;
         }
 
         .stat-item { text-align: center; }
-        .stat-item i { color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; }
-        .stat-item h4 { font-size: 0.9rem; text-transform: uppercase; color: #777; }
+        .stat-item i { color: var(--primary); font-size: 1.8rem; margin-bottom: 10px; transition: 0.3s; }
+        .stat-item:hover i { transform: scale(1.1); color: var(--accent); }
+        .stat-item h4 { font-size: 0.9rem; text-transform: uppercase; color: #777; font-weight: 800; }
 
         /* --- PACKAGES --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
@@ -113,15 +117,15 @@
             background: var(--glass);
             border-radius: 25px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.3);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
         .package-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
         }
 
         .package-img {
@@ -132,16 +136,21 @@
             justify-content: center;
             color: white;
             font-size: 4rem;
+            position: relative;
+            overflow: hidden;
         }
+
+        .package-img i { position: relative; z-index: 2; }
 
         .package-body { padding: 40px; text-align: center; }
         
         .price {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary);
             margin: 15px 0;
             display: block;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
         }
 
         .btn-main {
@@ -155,10 +164,16 @@
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,96,57,0.2);
+            box-shadow: 0 8px 20px rgba(0,96,57,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-main:hover { background: var(--primary-dark); transform: scale(1.05); }
+        .btn-main:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-3px); 
+            box-shadow: 0 12px 25px rgba(0,96,57,0.4); 
+        }
 
         /* --- FORM SECTION --- */
         #booking-section {
@@ -166,31 +181,32 @@
             background: var(--white);
             border-radius: 30px;
             padding: 60px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
             margin-top: 80px;
-            animation: fadeIn 0.6s ease;
+            animation: fadeIn 0.8s ease;
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         .input-box { display: flex; flex-direction: column; gap: 8px; }
-        .input-box label { font-weight: 700; font-size: 0.85rem; color: var(--primary); }
+        .input-box label { font-weight: 800; font-size: 0.8rem; color: var(--primary); letter-spacing: 0.5px; }
         .input-box input, .input-box select, .input-box textarea {
             padding: 15px;
             border: 2px solid #edf2f0;
             border-radius: 12px;
             background: #fcfdfc;
             transition: 0.3s;
+            font-family: 'Inter', sans-serif;
         }
-        .input-box input:focus { border-color: var(--primary); outline: none; }
+        .input-box input:focus { border-color: var(--primary); outline: none; background: white; box-shadow: 0 0 10px rgba(0,96,57,0.1); }
 
         /* --- MODAL --- */
         .modal {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,68,41,0.4);
-            backdrop-filter: blur(10px);
+            background: rgba(0,44,25,0.7);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             align-items: center; justify-content: center;
         }
@@ -201,14 +217,16 @@
             padding: 50px;
             border-radius: 30px;
             position: relative;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(163, 126, 44, 0.2);
         }
 
-        .close { position: absolute; top: 25px; right: 25px; cursor: pointer; font-size: 1.5rem; }
+        .close { position: absolute; top: 25px; right: 25px; cursor: pointer; font-size: 1.8rem; color: #999; transition: 0.3s; }
+        .close:hover { color: var(--primary); }
 
         .modal-list { list-style: none; margin: 25px 0; }
-        .modal-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .modal-list li i { color: var(--primary); }
+        .modal-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 12px; font-size: 1rem; }
+        .modal-list li i { color: var(--primary); font-size: 1.2rem; }
 
         /* --- FOOTER --- */
         footer {
@@ -217,41 +235,38 @@
             padding: 80px 20px;
             text-align: center;
             margin-top: 100px;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
         }
 
         .social-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
-        .social-links a { color: white; font-size: 1.8rem; transition: 0.3s; }
-        .social-links a:hover { color: var(--accent); transform: translateY(-5px); }
+        .social-links a { color: white; font-size: 2rem; transition: 0.4s; }
+        .social-links a:hover { color: var(--accent); transform: translateY(-8px) rotate(8deg); }
 
-        /* --- AJUSTES PARA TELÉFONO (RESPECTANDO TU DISEÑO) --- */
+        /* --- AJUSTES PARA TELÉFONO --- */
         @media (max-width: 768px) {
             .stats-bar {
-                grid-template-columns: repeat(2, 1fr); /* Hileras de 2 para Ambientación, Comodidad... */
+                grid-template-columns: repeat(2, 1fr);
                 margin: -30px 15px 30px;
                 padding: 20px 10px;
-                gap: 10px;
-            }
-            .stat-item:last-child {
-                grid-column: 1 / -1; /* El tercero se centra para no dejar hueco */
-            }
-            .stat-item h4 { font-size: 0.7rem; }
-            .stat-item p { font-size: 0.65rem; }
-
-            .package-grid {
-                grid-template-columns: repeat(2, 1fr); /* Hileras de 2 para los Paquetes */
                 gap: 15px;
             }
-            .package-img { height: 120px; font-size: 2.5rem; }
-            .package-body { padding: 15px 10px; }
-            .package-body h3 { font-size: 0.95rem; }
-            .package-body .price { font-size: 1.1rem; }
-            .package-body p { font-size: 0.7rem; line-height: 1.2; }
-            .btn-main { padding: 10px 15px; font-size: 0.65rem; }
+            .stat-item:last-child { grid-column: 1 / -1; }
+            
+            .package-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .package-img { height: 130px; font-size: 2.8rem; }
+            .package-body { padding: 15px 8px; }
+            .package-body h3 { font-size: 0.9rem; font-weight: 800; }
+            .package-body .price { font-size: 1.2rem; margin: 8px 0; }
+            .package-body p { font-size: 0.7rem; line-height: 1.3; }
+            .btn-main { padding: 10px 12px; font-size: 0.6rem; }
 
             .form-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-            #booking-section { padding: 30px 20px; }
-            .section-title { font-size: 2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            #booking-section { padding: 35px 20px; }
+            .modal-content { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -259,7 +274,7 @@
 
     <section class="hero">
         <h1>CINEBIG B.</h1>
-        <p>Experiencias de entretenimiento que transforman tus eventos familiares en momentos unicos.</p>
+        <p>Experiencias de entretenimiento que transforman tus eventos familiares en momentos únicos.</p>
     </section>
 
     <div class="stats-bar">
@@ -291,8 +306,8 @@
                 <div class="package-body">
                     <h3>Classic Cinema</h3>
                     <span class="price">$1,800 MXN</span>
-                    <p>Perfecto para fiestas y eventos donde se quiere un espacio especial de entretenimiento</p><br>
-                    <button class="btn-main" onclick="openModal('classic')">Explorar Contenido</button>
+                    <p>Experiencia tipo cine ideal para eventos privados y reuniones</p><br>
+                    <button class="btn-main" onclick="openModal('classic')">Ver Detalles</button>
                 </div>
             </div>
 
@@ -303,14 +318,14 @@
                 <div class="package-body">
                     <h3>Cinema Premium</h3>
                     <span class="price">$3,200 MXN</span>
-                    <p>Una experiencia tipo cine más completa, con mayor ambientación y comodidad para tu evento.</p><br>
-                    <button class="btn-main" onclick="openModal('gala')">Explorar Contenido</button>
+                    <p>Eleva tu evento con una experiencia tipo cine más envolvente y completa</p><br>
+                    <button class="btn-main" onclick="openModal('premium')">Ver Detalles</button>
                 </div>
             </div>
         </div>
 
         <section id="booking-section">
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Reservar Fecha</h2>
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: var(--primary);">Reservar Fecha</h2>
             <form id="bookingForm">
                 <div class="form-grid">
                     <div class="input-box">
@@ -322,16 +337,16 @@
                         <input type="date" id="date" required>
                     </div>
                     <div class="input-box">
-                        <label>INICIO DEL EVENTO</label>
-                        <input type="number" id="guests" placeholder="Hora que comienza el evento" required>
+                        <label>HORA DE INICIO</label>
+                        <input type="time" id="time" required>
                     </div>
                     <div class="input-box">
                         <label>NÚMERO DE INVITADOS</label>
                         <input type="number" id="guests" placeholder="¿Cuántos asistirán?" required>
                     </div>
-                    <div class="input-box">
-                        <label>ZONA / DIRECCIÓN</label>
-                        <input type="text" id="location" placeholder="Ej. Ciudad de México" required>
+                    <div class="input-box" style="grid-column: 1 / -1;">
+                        <label>ZONA / DIRECCIÓN EXACTA</label>
+                        <input type="text" id="location" placeholder="Calle, Número y Colonia" required>
                     </div>
                     <div class="input-box" style="grid-column: 1 / -1;">
                         <label>TIPO DE CELEBRACIÓN</label>
@@ -339,15 +354,16 @@
                             <option>Cumpleaños</option>
                             <option>Bautizo / Comunión</option>
                             <option>Boda (Zona de Niños)</option>
+                            <option>Reunión Privada</option>
                             <option>Otro</option>
                         </select>
                     </div>
                     <div class="input-box" style="grid-column: 1 / -1;">
                         <label>REQUERIMIENTOS ESPECIALES</label>
-                        <textarea id="notes" rows="4" placeholder="Cuéntanos más detalles..."></textarea>
+                        <textarea id="notes" rows="3" placeholder="Cuéntanos más detalles..."></textarea>
                     </div>
                     <button type="submit" class="btn-main" style="grid-column: 1 / -1; background: #25D366; font-size: 1.1rem; padding: 20px;">
-                        <i class="fa-brands fa-whatsapp"></i> SOLICITAR CONFIRMACIÓN POR WHATSAPP
+                        <i class="fa-brands fa-whatsapp"></i> SOLICITAR DISPONIBILIDAD
                     </button>
                 </div>
             </form>
@@ -357,7 +373,8 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title" style="font-family: 'Playfair Display'; color: var(--primary);"></h2>
+            <h2 id="modal-title" style="font-family: 'Playfair Display'; color: var(--primary); font-size: 2rem;"></h2>
+            <p id="modal-desc" style="margin-top: 10px; color: #666; font-style: italic;"></p>
             <ul class="modal-list" id="modal-list"></ul>
             <button class="btn-main" style="width: 100%;" onclick="startBooking()">Reservar este paquete</button>
         </div>
@@ -365,8 +382,9 @@
 
     <footer>
         <div class="social-links">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com/tu_usuario" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com/tu_pagina" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/5533712767" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
         <p>&copy; 2026 Cinebig B. - Zona de Entretenimiento. Calidad y Elegancia.</p>
     </footer>
@@ -375,11 +393,34 @@
         const details = {
             'classic': {
                 title: 'Classic Cinema',
-                list: ['Pantalla HD 80"', 'Sonido Estéreo', '10 Puffs cómodos', '3 Horas de proyección', 'Instalación básica']
+                desc: 'Experiencia tipo cine ideal para eventos privados y reuniones',
+                list: [
+                    'Pantalla de proyección',
+                    'Sonido estéreo',
+                    'Zona cómoda con puffs y tapetes',
+                    'Ambientación básica tipo cine',
+                    'Instalación completa',
+                    '🎬 Contenido a elegir (películas o videos)',
+                    '👤 Atención y supervisión durante el servicio',
+                    '⏱️ Duración: 3 horas 30 minutos'
+                ]
             },
-            'gala': {
+            'premium': {
                 title: 'Cinema Premium',
-                list: ['Pantalla 120" Pro', 'Sonido Envolvente', 'Carpa ambientada con luces', 'Alfombrado y Decoración Luxe', 'Palomitas gourmet incluidas', 'Servicio por 5 horas']
+                desc: 'Eleva tu evento con una experiencia tipo cine más envolvente y completa',
+                list: [
+                    'Pantalla de proyección',
+                    'Sonido envolvente (mejor distribuido)',
+                    'Carpa ambientada con iluminación especial',
+                    'Decoración temática + alfombrado',
+                    'Mayor comodidad y mejor distribución',
+                    '🎟️ Boletos simbólicos (detalle visual)',
+                    '🎬 Intro personalizada (Nombre en pantalla)',
+                    '🍿 Snacks: Palomitas y Bebidas incluidas',
+                    '👥 Equipo de atención y coordinación',
+                    '🎬 Contenido personalizado a elegir',
+                    '⏱️ Duración: 5 horas'
+                ]
             }
         };
 
@@ -388,10 +429,11 @@
         function openModal(pkg) {
             currentPackage = details[pkg].title;
             document.getElementById('modal-title').innerText = details[pkg].title;
+            document.getElementById('modal-desc').innerText = details[pkg].desc;
             const list = document.getElementById('modal-list');
             list.innerHTML = "";
             details[pkg].list.forEach(item => {
-                list.innerHTML += `<li><i class="fa-solid fa-check"></i> ${item}</li>`;
+                list.innerHTML += `<li><i class="fa-solid fa-star"></i> ${item}</li>`;
             });
             document.getElementById('modal').style.display = 'flex';
         }
@@ -406,9 +448,14 @@
 
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const msg = `*RESERVA CINE*%0A*Paquete:* ${currentPackage}%0A*Nombre:* ${document.getElementById('name').value}%0A*Fecha:* ${document.getElementById('date').value}%0A*Lugar:* ${document.getElementById('location').value}%0A*Invitados:* ${document.getElementById('guests').value}`;
-            window.open(`https://wa.me/5652092860?text=${msg}`, '_blank');
+            const msg = `*NUEVA RESERVA CINE*%0A%0A*Paquete:* ${currentPackage}%0A*Anfitrión:* ${document.getElementById('name').value}%0A*Fecha:* ${document.getElementById('date').value}%0A*Hora:* ${document.getElementById('time').value}%0A*Lugar:* ${document.getElementById('location').value}%0A*Invitados:* ${document.getElementById('guests').value}%0A*Tipo:* ${document.getElementById('event-type').value}%0A*Notas:* ${document.getElementById('notes').value}`;
+            window.open(`https://wa.me/5533712767?text=${msg}`, '_blank');
         });
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal')) closeModal();
+        }
     </script>
 </body>
 </html>
