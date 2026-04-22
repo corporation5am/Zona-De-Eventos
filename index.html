@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine | Experiencias de Entretenimiento Premium</title>
+    <title>Cine | Experiencias de Entretenimiento Exclusivo</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -258,8 +258,8 @@
 <body>
 
     <section class="hero">
-        <h1>CINE</h1>
-        <p>Experiencias de entretenimiento que transforman tus eventos familiares en momentos mágicos.</p>
+        <h1>CINEBIG B.</h1>
+        <p>Experiencias de entretenimiento que transforman tus eventos familiares en momentos unicos.</p>
     </section>
 
     <div class="stats-bar">
@@ -271,12 +271,12 @@
         <div class="stat-item">
             <i class="fa-solid fa-couch"></i>
             <h4>Comodidad</h4>
-            <p>Zona VIP Infantil</p>
+            <p>Zona exclusiva</p>
         </div>
         <div class="stat-item">
             <i class="fa-solid fa-truck-ramp-box"></i>
             <h4>Sin Esfuerzo</h4>
-            <p>Nosotros instalamos</p>
+            <p>Nosotros instalamos todo</p>
         </div>
     </div>
 
@@ -291,7 +291,7 @@
                 <div class="package-body">
                     <h3>Classic Cinema</h3>
                     <span class="price">$1,800 MXN</span>
-                    <p>La opción perfecta para espacios medianos y fiestas íntimas.</p><br>
+                    <p>Perfecto para fiestas y eventos donde se quiere un espacio especial de entretenimiento</p><br>
                     <button class="btn-main" onclick="openModal('classic')">Explorar Contenido</button>
                 </div>
             </div>
@@ -301,9 +301,9 @@
                     <i class="fa-solid fa-film"></i>
                 </div>
                 <div class="package-body">
-                    <h3>Gala VIP Luxe</h3>
+                    <h3>Cinema Premium</h3>
                     <span class="price">$3,200 MXN</span>
-                    <p>El máximo nivel de detalle para eventos de alto impacto.</p><br>
+                    <p>Una experiencia tipo cine más completa, con mayor ambientación y comodidad para tu evento.</p><br>
                     <button class="btn-main" onclick="openModal('gala')">Explorar Contenido</button>
                 </div>
             </div>
@@ -320,6 +320,10 @@
                     <div class="input-box">
                         <label>FECHA DEL EVENTO</label>
                         <input type="date" id="date" required>
+                    </div>
+                    <div class="input-box">
+                        <label>INICIO DEL EVENTO</label>
+                        <input type="number" id="guests" placeholder="Hora que comienza el evento" required>
                     </div>
                     <div class="input-box">
                         <label>NÚMERO DE INVITADOS</label>
@@ -343,7 +347,7 @@
                         <textarea id="notes" rows="4" placeholder="Cuéntanos más detalles..."></textarea>
                     </div>
                     <button type="submit" class="btn-main" style="grid-column: 1 / -1; background: #25D366; font-size: 1.1rem; padding: 20px;">
-                        <i class="fa-brands fa-whatsapp"></i> SOLICITAR COTIZACIÓN POR WHATSAPP
+                        <i class="fa-brands fa-whatsapp"></i> SOLICITAR CONFIRMACIÓN POR WHATSAPP
                     </button>
                 </div>
             </form>
@@ -364,7 +368,7 @@
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
             <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
-        <p>&copy; 2026 Cine - Zona de Entretenimiento. Calidad y Elegancia.</p>
+        <p>&copy; 2026 Cinebig B. - Zona de Entretenimiento. Calidad y Elegancia.</p>
     </footer>
 
     <script>
@@ -374,7 +378,7 @@
                 list: ['Pantalla HD 80"', 'Sonido Estéreo', '10 Puffs cómodos', '3 Horas de proyección', 'Instalación básica']
             },
             'gala': {
-                title: 'Gala VIP Luxe',
+                title: 'Cinema Premium',
                 list: ['Pantalla 120" Pro', 'Sonido Envolvente', 'Carpa ambientada con luces', 'Alfombrado y Decoración Luxe', 'Palomitas gourmet incluidas', 'Servicio por 5 horas']
             }
         };
