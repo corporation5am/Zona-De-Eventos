@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine | Experiencias de Entretenimiento Exclusivo</title>
+    <title>Cinebig B. | Experiencias de Entretenimiento Exclusivo</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,7 +13,6 @@
             --accent: #a37e2c; /* Dorado */
             --white: #ffffff;
             --glass: rgba(255, 255, 255, 0.95);
-            /* Sombras mejoradas para mayor profundidad */
             --shadow-sm: 0 5px 15px rgba(0,0,0,0.08);
             --shadow-md: 0 15px 35px rgba(0,0,0,0.12);
             --shadow-lg: 0 25px 60px rgba(0,0,0,0.18);
@@ -109,54 +108,175 @@
 
         .package-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
+            margin-bottom: 80px;
         }
 
         .package-card {
-            background: var(--glass);
-            border-radius: 25px;
+            background: var(--white);
+            border-radius: 30px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.4);
             box-shadow: var(--shadow-md);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
         }
 
         .package-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
         }
 
-        .package-img {
-            height: 200px;
-            background: var(--primary);
+        .package-header {
+            padding: 40px 30px;
+            text-align: center;
+            background: #f9f9f9;
+            border-bottom: 1px solid #eee;
+        }
+
+        .package-header i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .package-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        .package-body {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .package-features li {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: #555;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-            position: relative;
-            overflow: hidden;
+            gap: 10px;
         }
 
-        .package-img i { position: relative; z-index: 2; }
+        .package-features li i {
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
 
-        .package-body { padding: 40px; text-align: center; }
-        
+        .package-footer {
+            padding: 30px;
+            text-align: center;
+            background: #fff;
+        }
+
         .price {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--primary);
-            margin: 15px 0;
+            margin-bottom: 20px;
             display: block;
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
         }
+
+        /* --- TESTIMONIOS --- */
+        .testimonials {
+            background: rgba(0, 96, 57, 0.03);
+            padding: 80px 20px;
+            border-radius: 50px;
+            margin-bottom: 80px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .testimonial-card:hover { transform: scale(1.02); }
+
+        .testimonial-card i.fa-quote-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            color: var(--accent);
+            opacity: 0.3;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info h5 { font-weight: 800; color: var(--primary); }
+        .user-info span { font-size: 0.8rem; color: #888; }
+
+        /* --- FORM SECTION --- */
+        #booking-section {
+            display: none;
+            background: var(--white);
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: var(--shadow-lg);
+            margin-top: 50px;
+            border: 1px solid #f0f0f0;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .input-box { display: flex; flex-direction: column; gap: 8px; }
+        .input-box label { font-weight: 800; font-size: 0.75rem; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+        
+        .input-box input, .input-box select, .input-box textarea {
+            padding: 18px;
+            border: 2px solid #f0f4f2;
+            border-radius: 15px;
+            background: #fbfcfb;
+            transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .input-box input:focus { border-color: var(--primary); outline: none; background: white; box-shadow: 0 10px 20px rgba(0,96,57,0.05); }
 
         .btn-main {
             background: var(--primary);
             color: white;
-            padding: 15px 35px;
+            padding: 18px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
@@ -164,109 +284,57 @@
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0,96,57,0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
+            width: 100%;
         }
 
-        .btn-main:hover { 
-            background: var(--primary-dark); 
-            transform: translateY(-3px); 
-            box-shadow: 0 12px 25px rgba(0,96,57,0.4); 
-        }
-
-        /* --- FORM SECTION --- */
-        #booking-section {
-            display: none;
-            background: var(--white);
-            border-radius: 30px;
-            padding: 60px;
-            box-shadow: var(--shadow-lg);
-            margin-top: 80px;
-            animation: fadeIn 0.8s ease;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .input-box { display: flex; flex-direction: column; gap: 8px; }
-        .input-box label { font-weight: 800; font-size: 0.8rem; color: var(--primary); letter-spacing: 0.5px; }
-        .input-box input, .input-box select, .input-box textarea {
-            padding: 15px;
-            border: 2px solid #edf2f0;
-            border-radius: 12px;
-            background: #fcfdfc;
-            transition: 0.3s;
-            font-family: 'Inter', sans-serif;
-        }
-        .input-box input:focus { border-color: var(--primary); outline: none; background: white; box-shadow: 0 0 10px rgba(0,96,57,0.1); }
+        .btn-main:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,96,57,0.3); }
 
         /* --- MODAL --- */
         .modal {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,44,25,0.7);
-            backdrop-filter: blur(12px);
+            background: rgba(0,44,25,0.8);
+            backdrop-filter: blur(15px);
             z-index: 1000;
             align-items: center; justify-content: center;
+            padding: 20px;
         }
 
         .modal-content {
             background: white;
-            width: 90%; max-width: 600px;
+            width: 100%; max-width: 550px;
             padding: 50px;
-            border-radius: 30px;
+            border-radius: 40px;
             position: relative;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(163, 126, 44, 0.2);
+            animation: modalIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .close { position: absolute; top: 25px; right: 25px; cursor: pointer; font-size: 1.8rem; color: #999; transition: 0.3s; }
-        .close:hover { color: var(--primary); }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 
-        .modal-list { list-style: none; margin: 25px 0; }
-        .modal-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 12px; font-size: 1rem; }
-        .modal-list li i { color: var(--primary); font-size: 1.2rem; }
+        .close { position: absolute; top: 25px; right: 25px; cursor: pointer; font-size: 1.5rem; color: #ccc; }
 
         /* --- FOOTER --- */
         footer {
-            background: var(--primary);
+            background: var(--primary-dark);
             color: white;
             padding: 80px 20px;
             text-align: center;
             margin-top: 100px;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
         }
 
         .social-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
-        .social-links a { color: white; font-size: 2rem; transition: 0.4s; }
-        .social-links a:hover { color: var(--accent); transform: translateY(-8px) rotate(8deg); }
+        .social-links a { color: white; font-size: 1.8rem; transition: 0.4s; }
+        .social-links a:hover { color: var(--accent); transform: translateY(-5px); }
 
-        /* --- AJUSTES PARA TELÉFONO --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-                margin: -30px 15px 30px;
-                padding: 20px 10px;
-                gap: 15px;
-            }
-            .stat-item:last-child { grid-column: 1 / -1; }
-            
-            .package-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            .package-img { height: 130px; font-size: 2.8rem; }
-            .package-body { padding: 15px 8px; }
-            .package-body h3 { font-size: 0.9rem; font-weight: 800; }
-            .package-body .price { font-size: 1.2rem; margin: 8px 0; }
-            .package-body p { font-size: 0.7rem; line-height: 1.3; }
-            .btn-main { padding: 10px 12px; font-size: 0.6rem; }
-
             .form-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.8rem; }
-            #booking-section { padding: 35px 20px; }
-            .modal-content { padding: 30px 20px; }
+            .hero h1 { font-size: 3rem; }
+            .package-grid { grid-template-columns: 1fr; }
+            #booking-section { padding: 40px 20px; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); margin: -30px 15px; }
         }
     </style>
 </head>
@@ -291,7 +359,7 @@
         <div class="stat-item">
             <i class="fa-solid fa-truck-ramp-box"></i>
             <h4>Sin Esfuerzo</h4>
-            <p>Nosotros instalamos todo</p>
+            <p>Instalación completa</p>
         </div>
     </div>
 
@@ -300,56 +368,102 @@
         
         <div class="package-grid">
             <div class="package-card">
-                <div class="package-img" style="background: linear-gradient(45deg, #006039, #008a52);">
+                <div class="package-header">
                     <i class="fa-solid fa-clapperboard"></i>
+                    <h3>Classic Cinema</h3>
                 </div>
                 <div class="package-body">
-                    <h3>Classic Cinema</h3>
+                    <ul class="package-features">
+                        <li><i class="fa-solid fa-check"></i> Pantalla de proyección</li>
+                        <li><i class="fa-solid fa-check"></i> Sonido estéreo</li>
+                        <li><i class="fa-solid fa-check"></i> Puffs y tapetes</li>
+                        <li><i class="fa-solid fa-check"></i> Snacks: Palomitas</li>
+                        <li><i class="fa-solid fa-check"></i> 4 Horas 30 Minutos</li>
+                    </ul>
+                </div>
+                <div class="package-footer">
                     <span class="price">$1,900 MXN</span>
-                    <p>Perfecto para fiestas y eventos donde se quiere un espacio especial de entretenimiento</p><br>
-                    <button class="btn-main" onclick="openModal('classic')">Ver Detalles</button>
+                    <button class="btn-main" onclick="openModal('classic')">Ver Detalles y Reservar</button>
                 </div>
             </div>
 
-            <div class="package-card">
-                <div class="package-img" style="background: linear-gradient(45deg, #004429, #006039);">
-                    <i class="fa-solid fa-film"></i>
+            <div class="package-card" style="border: 2px solid var(--accent);">
+                <div class="package-header" style="background: linear-gradient(to bottom, #fdfbf7, #fff);">
+                    <i class="fa-solid fa-crown" style="color: var(--accent);"></i>
+                    <h3>Cinema Premium</h3>
                 </div>
                 <div class="package-body">
-                    <h3>Cinema Premium</h3>
+                    <ul class="package-features">
+                        <li><i class="fa-solid fa-star"></i> Carpa con iluminación</li>
+                        <li><i class="fa-solid fa-star"></i> Sonido envolvente</li>
+                        <li><i class="fa-solid fa-star"></i> Alfombrado y decoración</li>
+                        <li><i class="fa-solid fa-star"></i> Intro Personalizada</li>
+                        <li><i class="fa-solid fa-star"></i> 5 Horas de Servicio</li>
+                    </ul>
+                </div>
+                <div class="package-footer">
                     <span class="price">$2,900 MXN</span>
-                    <p>Una experiencia tipo cine más completa, con mayor ambientación y comodidad para tu evento</p><br>
-                    <button class="btn-main" onclick="openModal('premium')">Ver Detalles</button>
+                    <button class="btn-main" style="background: var(--accent);" onclick="openModal('premium')">Ver Detalles y Reservar</button>
                 </div>
             </div>
         </div>
 
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        <section class="testimonials">
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"La mejor decisión para el cumple de mi hijo. Los niños estuvieron encantados y la atención fue increíble."</p>
+                    <div class="testimonial-user">
+                        <div class="user-info">
+                            <h5>Mariana López</h5>
+                            <span>Evento en CDMX</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Súper profesionales. Puntuales y el montaje se ve de lujo. Repetiremos sin duda."</p>
+                    <div class="testimonial-user">
+                        <div class="user-info">
+                            <h5>Ricardo G.</h5>
+                            <span>Reunión Privada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="booking-section">
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: var(--primary);">Reservar Fecha</h2>
+            <div class="booking-header">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary);">Finalizar Reserva</h2>
+                <p id="selected-package-text" style="color: var(--accent); font-weight: 700; margin-top: 10px;"></p>
+            </div>
+            
             <form id="bookingForm">
                 <div class="form-grid">
                     <div class="input-box">
-                        <label>NOMBRE DEL ANFITRIÓN</label>
-                        <input type="text" id="name" placeholder="Tu nombre" required>
+                        <label>Nombre del Anfitrión</label>
+                        <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
                     </div>
                     <div class="input-box">
-                        <label>FECHA DEL EVENTO</label>
+                        <label>Fecha del Evento</label>
                         <input type="date" id="date" required>
                     </div>
                     <div class="input-box">
-                        <label>HORA DE INICIO</label>
+                        <label>Hora de Inicio</label>
                         <input type="time" id="time" required>
                     </div>
                     <div class="input-box">
-                        <label>NÚMERO DE INVITADOS</label>
+                        <label>Nº de Invitados</label>
                         <input type="number" id="guests" placeholder="¿Cuántos asistirán?" required>
                     </div>
                     <div class="input-box" style="grid-column: 1 / -1;">
-                        <label>ZONA / DIRECCIÓN EXACTA</label>
-                        <input type="text" id="location" placeholder="Calle, Número y Colonia" required>
+                        <label>Dirección del Evento</label>
+                        <input type="text" id="location" placeholder="Calle, Colonia y Delegación" required>
                     </div>
                     <div class="input-box" style="grid-column: 1 / -1;">
-                        <label>TIPO DE CELEBRACIÓN</label>
+                        <label>Tipo de Celebración</label>
                         <select id="event-type">
                             <option>Cumpleaños</option>
                             <option>Bautizo / Comunión</option>
@@ -359,12 +473,14 @@
                         </select>
                     </div>
                     <div class="input-box" style="grid-column: 1 / -1;">
-                        <label>REQUERIMIENTOS ESPECIALES</label>
-                        <textarea id="notes" rows="3" placeholder="Cuéntanos más detalles..."></textarea>
+                        <label>Notas adicionales</label>
+                        <textarea id="notes" rows="3" placeholder="¿Algún requerimiento especial?"></textarea>
                     </div>
-                    <button type="submit" class="btn-main" style="grid-column: 1 / -1; background: #25D366; font-size: 1.1rem; padding: 20px;">
-                        <i class="fa-brands fa-whatsapp"></i> SOLICITAR DISPONIBILIDAD
-                    </button>
+                    <div style="grid-column: 1 / -1; margin-top: 20px;">
+                        <button type="submit" class="btn-main" style="background: #25D366; display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 1.1rem;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i> Confirmar por WhatsApp
+                        </button>
+                    </div>
                 </div>
             </form>
         </section>
@@ -372,11 +488,16 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title" style="font-family: 'Playfair Display'; color: var(--primary); font-size: 2rem;"></h2>
-            <p id="modal-desc" style="margin-top: 10px; color: #666; font-style: italic;"></p>
-            <ul class="modal-list" id="modal-list"></ul>
-            <button class="btn-main" style="width: 100%;" onclick="startBooking()">Reservar este paquete</button>
+            <span class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            <h2 id="modal-title" style="font-family: 'Playfair Display'; color: var(--primary); font-size: 2rem; margin-bottom: 10px;"></h2>
+            <p id="modal-desc" style="color: #666; font-style: italic; margin-bottom: 25px; border-left: 3px solid var(--accent); padding-left: 15px;"></p>
+            
+            <div style="max-height: 300px; overflow-y: auto; margin-bottom: 30px; padding-right: 10px;">
+                <ul id="modal-list" style="list-style: none;">
+                    </ul>
+            </div>
+            
+            <button class="btn-main" onclick="startBooking()">Reservar ahora</button>
         </div>
     </div>
 
@@ -394,36 +515,12 @@
             'classic': {
                 title: 'Classic Cinema',
                 desc: 'Perfecto para fiestas y eventos donde se quiere un espacio especial de entretenimiento',
-                list: [
-                    'Pantalla de proyección',
-                    'Sonido estéreo',
-                    'Zona cómoda con puffs y tapetes',
-                    'Ambientación básica tipo cine',
-                    'Snacks: Palomitas',
-                    'Instalación completa',
-                    'Contenido a elegir (películas o videos)',
-                    'Atención y supervisión durante el servicio',
-                    'Duración: 4 horas 30 minutos'
-                ]
+                list: ['Pantalla de proyección', 'Sonido estéreo', 'Zona cómoda con puffs y tapetes', 'Ambientación básica tipo cine', 'Snacks: Palomitas', 'Instalación completa', 'Contenido a elegir', 'Atención durante el servicio', 'Duración: 4 horas 30 minutos']
             },
             'premium': {
                 title: 'Cinema Premium',
-                desc: 'Una experiencia tipo cine más completa, con mayor ambientación y comodidad para tu evento',
-                list: [
-                    'Pantalla de proyección',
-                    'Sonido envolvente',
-                    'Carpa ambientada con iluminación',
-                    'Decoración temática + alfombrado',
-                    'Mayor comodidad y mejor distribución',
-                    'Intro personalizada (Nombre en pantalla)',
-                    'Snacks: Palomitas y Bebidas',
-                    'Equipo de atención y coordinación',
-                    'Coordinación general del servicio',
-                    'Supervisión del área de proyección',
-                    'Apoyo en zona de snacks',
-                    'Contenido personalizado a elegir',
-                    'Duración: 5 horas'
-                ]
+                desc: 'Una experiencia tipo cine más completa, con mayor ambientación y comodidad',
+                list: ['Pantalla de proyección', 'Sonido envolvente', 'Carpa ambientada con iluminación', 'Decoración temática + alfombrado', 'Mayor comodidad y distribución', 'Intro personalizada', 'Snacks: Palomitas y Bebidas', 'Equipo de atención y coordinación', 'Supervisión constante', 'Apoyo en zona de snacks', 'Duración: 5 horas']
             }
         };
 
@@ -436,7 +533,7 @@
             const list = document.getElementById('modal-list');
             list.innerHTML = "";
             details[pkg].list.forEach(item => {
-                list.innerHTML += `<li><i class="fa-solid fa-star"></i> ${item}</li>`;
+                list.innerHTML += `<li style="margin-bottom:12px; display:flex; align-items:center; gap:10px;"><i class="fa-solid fa-star" style="color:var(--accent); font-size:0.8rem;"></i> ${item}</li>`;
             });
             document.getElementById('modal').style.display = 'flex';
         }
@@ -445,21 +542,29 @@
 
         function startBooking() {
             closeModal();
-            document.getElementById('booking-section').style.display = 'block';
-            window.scrollTo({top: document.getElementById('booking-section').offsetTop - 50, behavior: 'smooth'});
+            const bookingSec = document.getElementById('booking-section');
+            bookingSec.style.display = 'block';
+            document.getElementById('selected-package-text').innerText = "Paquete seleccionado: " + currentPackage;
+            window.scrollTo({top: bookingSec.offsetTop - 50, behavior: 'smooth'});
         }
 
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const msg = `*NUEVA RESERVA CINE*%0A%0A*Paquete:* ${currentPackage}%0A*Anfitrión:* ${document.getElementById('name').value}%0A*Fecha:* ${document.getElementById('date').value}%0A*Hora:* ${document.getElementById('time').value}%0A*Lugar:* ${document.getElementById('location').value}%0A*Invitados:* ${document.getElementById('guests').value}%0A*Tipo:* ${document.getElementById('event-type').value}%0A*Notas:* ${document.getElementById('notes').value}`;
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const location = document.getElementById('location').value;
+            const guests = document.getElementById('guests').value;
+            const type = document.getElementById('event-type').value;
+            const notes = document.getElementById('notes').value;
+            
+            const msg = `*NUEVA RESERVA CINEBIG*%0A%0A*Paquete:* ${currentPackage}%0A*Anfitrión:* ${name}%0A*Fecha:* ${date}%0A*Hora:* ${time}%0A*Lugar:* ${location}%0A*Invitados:* ${guests}%0A*Tipo:* ${type}%0A*Notas:* ${notes}`;
             window.open(`https://wa.me/5533712767?text=${msg}`, '_blank');
         });
 
-        // Cerrar modal al hacer clic fuera
         window.onclick = function(event) {
             if (event.target == document.getElementById('modal')) closeModal();
         }
     </script>
 </body>
 </html>
-
