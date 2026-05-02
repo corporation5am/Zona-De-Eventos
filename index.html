@@ -252,6 +252,8 @@
             animation: fadeIn 0.8s ease;
         }
 
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
         .booking-header {
             text-align: center;
             margin-bottom: 40px;
@@ -476,6 +478,16 @@
                         <label>Notas adicionales</label>
                         <textarea id="notes" rows="3" placeholder="¿Algún requerimiento especial?"></textarea>
                     </div>
+                    
+                    <!-- NUEVA PREGUNTA DE LLAMADA -->
+                    <div class="input-box" style="grid-column: 1 / -1;">
+                        <label>¿Te gustaría agendar una llamada breve para resolver dudas y ver detalles?</label>
+                        <select id="call-preference">
+                            <option value="No, solo confirmación por WhatsApp">No por el momento, solo confirmación por WhatsApp</option>
+                            <option value="Sí, me gustaría una llamada de asesoría">Sí, me gustaría agendar una llamada de asesoría</option>
+                        </select>
+                    </div>
+
                     <div style="grid-column: 1 / -1; margin-top: 20px;">
                         <button type="submit" class="btn-main" style="background: #25D366; display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 1.1rem;">
                             <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i> Confirmar por WhatsApp
@@ -494,7 +506,7 @@
             
             <div style="max-height: 300px; overflow-y: auto; margin-bottom: 30px; padding-right: 10px;">
                 <ul id="modal-list" style="list-style: none;">
-                    </ul>
+                </ul>
             </div>
             
             <button class="btn-main" onclick="startBooking()">Reservar ahora</button>
@@ -557,8 +569,9 @@
             const guests = document.getElementById('guests').value;
             const type = document.getElementById('event-type').value;
             const notes = document.getElementById('notes').value;
+            const call = document.getElementById('call-preference').value;
             
-            const msg = `*NUEVA RESERVA CINEBIG*%0A%0A*Paquete:* ${currentPackage}%0A*Anfitrión:* ${name}%0A*Fecha:* ${date}%0A*Hora:* ${time}%0A*Lugar:* ${location}%0A*Invitados:* ${guests}%0A*Tipo:* ${type}%0A*Notas:* ${notes}`;
+            const msg = `*NUEVA RESERVA CINEBIG*%0A%0A*Paquete:* ${currentPackage}%0A*Anfitrión:* ${name}%0A*Fecha:* ${date}%0A*Hora:* ${time}%0A*Lugar:* ${location}%0A*Invitados:* ${guests}%0A*Tipo:* ${type}%0A*Agendar Llamada:* ${call}%0A*Notas:* ${notes}`;
             window.open(`https://wa.me/5533712767?text=${msg}`, '_blank');
         });
 
